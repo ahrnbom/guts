@@ -28,9 +28,10 @@ cd guts
 
 # Inside the Singularity image now
 
-# The following line only needs to be run once
-./setup.sh
+# The following line should only be run once
+mkdir ./samhnet_training/new/
 ```
+
 After following these steps, visit [this link](https://lunduniversityo365-my.sharepoint.com/:u:/g/personal/ma7467ah_lu_se/EdD5AExNahhChwPhPqrBRQgBj-X4FwopdwEwMTOLg1yEpA?e=ajPSYh) to download the file and place it under `samhnet_training/new`, in order to use pre-trained SAMHNet (trained on the UTOCS dataset).
 
-When inside the Singularity container, press Ctrl + D to exit to your own shell.
+When inside the Singularity container, press `Ctrl`+`D` to exit to your own shell.
