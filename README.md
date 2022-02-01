@@ -28,10 +28,9 @@ cd guts
 
 # Inside the Singularity image now
 
-# The following line should only be run once
-mkdir ./samhnet_training/new/
+python -m pytest .
 ```
 
-After following these steps, visit [this link](https://lunduniversityo365-my.sharepoint.com/:u:/g/personal/ma7467ah_lu_se/EdD5AExNahhChwPhPqrBRQgBj-X4FwopdwEwMTOLg1yEpA?e=ajPSYh) to download the file and place it under `samhnet_training/new`, in order to use pre-trained SAMHNet (trained on the UTOCS dataset).
+After following these steps, visit [this link in a web browser](https://lunduniversityo365-my.sharepoint.com/:u:/g/personal/ma7467ah_lu_se/EdD5AExNahhChwPhPqrBRQgBj-X4FwopdwEwMTOLg1yEpA?e=ajPSYh) to download the file and place it under `samhnet_training/new`, in order to use pre-trained SAMHNet (trained on the UTOCS dataset). If you don't do this, you will have to train SAMHNet yourself in order to use it.
 
 When inside the Singularity container, press `Ctrl`+`D` to exit to your own shell.
