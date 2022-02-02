@@ -11,9 +11,12 @@ If you find this project useful, please cite our paper:
 bibtex coming soon, paper not yet published
 ```
 
-This method can be used alongside the [UTOCS dataset](https://github.com/ahrnbom/utocs), in addition to custom datasets. To run on your own data, you can either create a dataset object similar to the `UTOCS` class in `utocs.py`, or look at `guts.py` and apply the method to images you load manually. 
+## Information
+
+This method can be used alongside the [UTOCS dataset](https://github.com/ahrnbom/utocs), in addition to custom datasets. To run on your own data, you can either create a dataset object similar to the `UTOCS` class in `utocs.py`, or look at `guts.py` and `test_guts.py` and apply the method to images, ground surfaces and camera calibration matrices you load manually. 
 
 Both GUTS and our implementation of UTS makes the following assumptions on your data:
+1. The video consist of RGB images at a reasonable resolution like 720p or 1080p
 1. The camera is fully calibrated with a 4x3 projection matrix, and radial distortion is removed from the images.
 2. Some sampled ground points in world coordinates exists that are visible in the scene. For UTS, these are only used to define a plane perpendicular to the z-axis, at the z-level that is the average of the points.
 3. GUTS supports cars, trucks, buses, pedestrians and bicyclists. UTS supports cars, trucks and buses.
