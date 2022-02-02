@@ -9,7 +9,6 @@ from typing import List,Dict,Tuple
 import cv2 
 import imageio as iio
 import numpy as np 
-from scipy.io import loadmat
 from scipy.linalg import null_space 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -577,7 +576,7 @@ def render_pixel_frame(image:np.ndarray, classes:List[str], frame_no:int,
     # Draw ground points 
     n = ground.shape[1]
     new_ground = np.ones((4, n), dtype=np.float32)
-    new_ground[0:3, :] = ground
+    new_ground[0:3, :] = ground[0:3, :]
     ground2D = pflat(cam @ new_ground)
     for i in range(n):
         gnd = ground2D[:, i]

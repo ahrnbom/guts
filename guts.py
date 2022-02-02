@@ -9,7 +9,7 @@
 
 from pathlib import Path 
 import numpy as np 
-from typing import List 
+from typing import Dict, List 
 import json 
 import argparse
 
@@ -93,26 +93,27 @@ def export_tracks(tracks:List, seq:str, name:str, start_frame:int, end_frame:int
                 return vector_dist(c, pos) < max_dist
             relevant = [t for t in relevant if track_ok(t)]
         
-        objs = list()
-        for track in relevant:
-            vec = track.vector_for_scoring(frame_no)
-            x, y, l, w, phi = [float(v) for v in vec]
-            z = world.ground.get_z(x, y)
-            fx = float(np.cos(phi))
-            fy = float(np.sin(phi))
-            fz = 0.0
-            h = float(track.height)
-            obj = {'x': x, 'y': y, 'z': z, 'l':l, 'w':w, 'h':h,
-                   'forward_x': fx, 'forward_y': fy, 'forward_z': fz, 
-                   'type': track.class_name, 'id': track.id}
-            
-            objs.append(obj)
+        objs = [track_to_obj(t, frame_no, world) for t in relevant]
 
         json_file = output / f"{long_str(frame_no, 6)}.json"
         json_file.write_text(json.dumps(objs, indent=2))
 
     if verbose:
         print(f"Written JSON files in {output}")
+
+def track_to_obj(track, frame_no, world) -> Dict:
+    vec = track.vector_for_scoring(frame_no)
+    x, y, l, w, phi = [float(v) for v in vec]
+    z = world.ground.get_z(x, y)
+    fx = float(np.cos(phi))
+    fy = float(np.sin(phi))
+    fz = 0.0
+    h = float(track.height)
+    X = [x, y, z, 1.0]
+    obj = {'x': x, 'y': y, 'z': z, 'l':l, 'w':w, 'h':h,
+            'forward_x': fx, 'forward_y': fy, 'forward_z': fz, 
+            'type': track.class_name, 'id': track.id, 'X': X}
+    return obj 
 
 def main(dataset_name:str, extra_name="", which_set='training',
          force_detectron2=False, force_samhnet=False, 

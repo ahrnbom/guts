@@ -90,22 +90,7 @@ class UTOCS:
         sn = long_str(seq_num, 4)
         folder = self.root_path / 'scenarios' / sn / 'positions'
         file = folder / f"{long_str(frame_no)}.json"
-        
-        objs = json.loads(file.read_text())
-        instances = list()
-        for obj in objs:
-            x, y, z, l, w, h = [obj[key] for key in "xyzlwh"]
-            X = np.array([x, y, z, 1], dtype=np.float32).reshape((4,1))
-            shape = np.array([l, w, h], dtype=np.float32)
-            ru_type = obj['type']
-            track_id = obj['id']
-            fx, fy = [obj[key] for key in ('forward_x', 'forward_y')]
-            phi = np.arctan2(fy, fx)
-
-            instance = GTInstance(X, ru_type, track_id, shape, phi)
-            instances.append(instance)
-        
-        return instances
+        return gtis_from_json(file)
 
     def get_gts(self, which_set:str):
         sets = self.sets[which_set]
@@ -146,6 +131,23 @@ class UTOCS:
         center_pos = pflat(null_space(cams[0]))
         return evaluate_tracks(tracks, gt, center_pos, self.options)
 
+
+def gtis_from_json(json_file:Path) -> List[GTInstance]:
+    objs = json.loads(json_file.read_text())
+    instances = list()
+    for obj in objs:
+        x, y, z, l, w, h = [obj[key] for key in "xyzlwh"]
+        X = np.array([x, y, z, 1], dtype=np.float32).reshape((4,1))
+        shape = np.array([l, w, h], dtype=np.float32)
+        ru_type = obj['type']
+        track_id = obj['id']
+        fx, fy = [obj[key] for key in ('forward_x', 'forward_y')]
+        phi = np.arctan2(fy, fx)
+
+        instance = GTInstance(X, ru_type, track_id, shape, phi)
+        instances.append(instance)
+    
+    return instances
 
 def build_camera_matrices(folder:Path, output_K=False):
     txt_path = folder / 'cameras.json'

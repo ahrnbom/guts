@@ -34,3 +34,5 @@ python -m pytest .
 ```
 
 When inside the Singularity container, press `Ctrl`+`D` to exit to your own shell.
+
+After running the tests, inspect the video in `output/demo.mp4` and see that tracking is performed reasonably well.
