@@ -20,7 +20,7 @@ Both GUTS and our implementation of UTS makes the following assumptions on your 
 
 ## Installation
 You will need the following dependencies:
-1. A powerful, modern Linux computer with an Nvidia GPU
+1. A powerful, modern Linux computer with an Nvidia GPU and correctly installed drivers, including CUDA 11.4
 2. `git`
 3. `singularity` (we use version 3.8.1)
 
