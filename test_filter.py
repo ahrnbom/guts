@@ -10,7 +10,7 @@ import numpy as np
 
 from util import vector_dist
 from filter import filter2D, filter3D
-from options import default_3D_params, default_2D_params
+from options import default_3D_params_guts, default_2D_params
 
 def test_filter3D(do_test=True, **kwargs):
     s = np.array([10, 10], dtype=np.float32)
@@ -22,7 +22,7 @@ def test_filter3D(do_test=True, **kwargs):
 
     phi = np.arctan2(c2[1]-c1[1], c2[0]-c1[0])
     v = vector_dist(c2, c1)
-    p = default_3D_params()
+    p = default_3D_params_guts()
     f = filter3D(c2, s, phi, v, kappa=p.kappa, P_factor=p.P_factor,
                  Q_c=p.Q_c, Q_s=p.Q_s, Q_phi=p.Q_phi, Q_v=p.Q_v, 
                  Q_omega=p.Q_omega, Q_cov=p.Q_cov,

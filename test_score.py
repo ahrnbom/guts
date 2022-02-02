@@ -6,7 +6,6 @@
     Tests related to how scoring is computed
 """
 
-
 import numpy as np 
 from score import iou3D
 

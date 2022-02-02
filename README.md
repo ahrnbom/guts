@@ -29,6 +29,7 @@ cd guts
 
 # Inside the Singularity image now
 
+# These should all pass, perhaps with some warnings
 python -m pytest .
 ```
 
