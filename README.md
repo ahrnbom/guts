@@ -35,10 +35,9 @@ cd guts
 
 # Inside the Singularity image now
 
-# These should all pass, perhaps with some warnings
 python -m pytest .
 ```
 
 When inside the Singularity container, press `Ctrl`+`D` to exit to your own shell.
 
-After running the tests, inspect the video in `output/demo.mp4` and see that tracking is performed reasonably well.
+The tests should all pass, albeit with some [warnings](https://preview.redd.it/q0qacyitgef81.gif?format=mp4&s=a793c015a8d4d0b0d8f21ebb77cd7545e2fd9d33). After running the tests, inspect the video in `output/demo.mp4` and see that tracking is performed reasonably well.
