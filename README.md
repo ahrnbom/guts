@@ -2,6 +2,9 @@
 
 This repository contains the source code to GUTS, as well as our reimplementation of [UTS](https://ieeexplore.ieee.org/document/9575140). Because these methods share so many components, they share one codebase. Instances of the `Options` class specify which method is used, including possible superpositions between the two methods, such as running UTS with Mask R-CNN as its detector.
 
+## Example video
+[Click here to see an example video of GUTS running on the UTOCS dataset](https://youtu.be/WMUpdCCLJAM)
+
 ## Citation
 If you find this project useful, please cite our paper: 
 ```
