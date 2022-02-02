@@ -13,7 +13,6 @@ from typing import List
 import numpy as np
 from pathlib import Path 
 import imageio as iio
-from numpy.lib.npyio import ndfromtxt
 
 class ImageSequence:
     def load(self, im_num:int) -> np.ndarray:
@@ -39,3 +38,25 @@ class FolderSequence(ImageSequence):
 
     def start_frame(self) -> int:
         return 0 
+
+class VideoSequence(ImageSequence):
+    def __init__(self, vid_file:Path):
+        assert vid_file.is_file()
+        self.vid = iio.get_reader(vid_file)
+        self.frame_count = None 
+
+    def __del__(self):
+        # Attempt to clean up
+        self.vid.close()
+    
+    def load(self, im_num:int) -> np.ndarray:
+        return self.vid.get_data(im_num)
+    
+    def number_of_frames(self) -> int:
+        if self.frame_count is None:
+            self.frame_count = self.vid.count_frames()
+        
+        return self.frame_count
+
+    def start_frame(self) -> int:
+        return 0
