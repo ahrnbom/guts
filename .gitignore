@@ -1,6 +1,8 @@
 ### Custom ###
 *.sif
-
+*.jpg
+*.mp4
+*.pth
 ### Custom ignores end here
 
 

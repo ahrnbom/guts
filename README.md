@@ -2,6 +2,7 @@
 
 This repository contains the source code to GUTS, as well as our reimplementation of [UTS](https://ieeexplore.ieee.org/document/9575140). Because these methods share so many components, they share one codebase. Instances of the `Options` class specify which method is used, including possible superpositions between the two methods, such as running UTS with Mask R-CNN as its detector.
 
+## Citation
 If you find this project useful, please cite our paper: 
 ```
 bibtex coming soon, paper not yet published
@@ -30,7 +31,5 @@ cd guts
 
 python -m pytest .
 ```
-
-After following these steps, visit [this link in a web browser](https://lunduniversityo365-my.sharepoint.com/:u:/g/personal/ma7467ah_lu_se/EdD5AExNahhChwPhPqrBRQgBj-X4FwopdwEwMTOLg1yEpA?e=ajPSYh) to download the file and place it under `samhnet_training/new`, in order to use pre-trained SAMHNet (trained on the UTOCS dataset). If you don't do this, you will have to train SAMHNet yourself in order to use it.
 
 When inside the Singularity container, press `Ctrl`+`D` to exit to your own shell.
