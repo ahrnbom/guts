@@ -7,9 +7,7 @@ This repository contains the source code to GUTS, as well as our reimplementatio
 
 ## Citation
 If you find this project useful, please cite our paper: 
-```
-bibtex coming soon, paper not yet published
-```
+https://ieeexplore.ieee.org/abstract/document/9921949
 
 ## Information
 
